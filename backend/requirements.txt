@@ -1,3 +1,4 @@
+gunicorn
 Flask
 pandas
 reportlab
@@ -5,6 +6,5 @@ scikit-learn
 nltk
 spaCy
 pytest
-gunicorn
 
 
