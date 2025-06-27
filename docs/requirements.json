@@ -1,0 +1,102 @@
+{
+  "project_title": "Transaction Reconciliation Tool",
+  "date": "June 27, 2025",
+  "requirements": {
+    "file_upload": "Drag-and-drop interface supporting CSV files up to 10MB with real-time validation and progress indicators",
+    "comparison_engine": "Automated transaction matching based on unique transaction_reference field with categorization into Matched, Internal Only, and Provider Only",
+    "ui_dashboard": "Responsive summary dashboard with transaction counts, pie charts, and paginated sortable tables with search functionality",
+    "ai_enhancements": "Intelligent column mapping using NLP techniques and machine learning-based anomaly detection with risk assessment",
+    "export_functionality": "Client-side and server-side CSV export options for individual categories and bulk ZIP download",
+    "data_visualization": "Interactive charts showing transaction distribution and AI quality insights with color-coded highlighting",
+    "responsive_design": "Mobile-friendly interface built with TailwindCSS and shadcn/ui components"
+  },
+  "assumptions": [
+    "Each CSV file contains unique transaction_reference values within the file",
+    "CSV files are well-formed with proper headers including transaction_reference, amount, and status fields",
+    "Single-user demonstration environment where uploaded files overwrite previous uploads",
+    "No persistent storage or user authentication required for demo purposes",
+    "All transactions use the same currency for amount comparisons",
+    "Files are processed in-memory with session-based caching for export functionality"
+  ],
+  "scope": {
+    "included": [
+      "Web-based user interface for file upload and result visualization",
+      "Backend API for CSV processing and transaction reconciliation",
+      "AI-powered column mapping and anomaly detection",
+      "Export functionality for reconciliation results",
+      "Responsive design for desktop and mobile devices",
+      "Real-time validation and error handling",
+      "Interactive data tables with sorting and filtering",
+      "Summary statistics and data visualization charts"
+    ],
+    "excluded": [
+      "User authentication and authorization system",
+      "Persistent data storage or database integration",
+      "Multi-user support or session management",
+      "Advanced reporting or analytics features",
+      "Integration with external payment systems",
+      "Automated scheduling or batch processing",
+      "Advanced security features beyond basic validation",
+      "Support for file formats other than CSV"
+    ]
+  },
+  "technical_specifications": {
+    "frontend": {
+      "framework": "React 18 with functional components and hooks",
+      "styling": "TailwindCSS with shadcn/ui component library",
+      "charts": "Recharts for data visualization",
+      "file_handling": "React Dropzone for uploads, PapaParse for CSV processing",
+      "http_client": "Axios for API communication"
+    },
+    "backend": {
+      "framework": "Flask with RESTful API design",
+      "data_processing": "Pandas for CSV manipulation and analysis",
+      "machine_learning": "Scikit-learn for anomaly detection using Isolation Forest",
+      "cors": "Flask-CORS for cross-origin request support",
+      "file_handling": "Werkzeug for secure file uploads"
+    },
+    "deployment": {
+      "development": "Local development with Flask dev server and Vite",
+      "production_options": ["Replit for full-stack deployment", "Vercel for frontend + Fly.io for backend", "Integrated Flask deployment with built React frontend"],
+      "requirements": "Python 3.11+, Node.js 20+, modern web browser"
+    }
+  },
+  "ai_features": {
+    "column_mapping": {
+      "description": "Intelligent detection and mapping of CSV column headers to standard fields",
+      "technique": "Keyword matching with confidence scoring and fuzzy string matching",
+      "supported_fields": ["transaction_reference", "amount", "status", "transaction_date", "transaction_currency"]
+    },
+    "anomaly_detection": {
+      "description": "Machine learning-based identification of suspicious or unusual transactions",
+      "algorithms": ["Isolation Forest for outlier detection", "Statistical variance analysis", "Pattern-based status conflict detection"],
+      "risk_levels": ["Low", "Medium", "High"],
+      "thresholds": "Amount variance >5% flagged as high risk, critical status mismatches identified"
+    }
+  },
+  "user_experience": {
+    "workflow": [
+      "User uploads two CSV files via drag-and-drop interface",
+      "System validates files and performs AI column mapping",
+      "Backend processes files and performs transaction reconciliation",
+      "Results displayed in categorized tables with visual highlighting",
+      "AI insights shown in dashboard with anomaly detection results",
+      "Users can export results in various formats"
+    ],
+    "visual_indicators": {
+      "matched_perfect": "Green highlighting for exact matches",
+      "amount_mismatch": "Orange highlighting for amount discrepancies",
+      "status_mismatch": "Red highlighting for status conflicts",
+      "ai_anomaly": "Purple highlighting for ML-detected anomalies",
+      "internal_only": "Yellow highlighting for internal-only transactions",
+      "provider_only": "Red highlighting for provider-only transactions"
+    }
+  },
+  "performance_targets": {
+    "file_size": "Support up to 10MB CSV files with optimal performance under 5MB",
+    "processing_time": "Reconciliation completed within 30 seconds for typical datasets",
+    "ui_responsiveness": "Interactive elements respond within 100ms",
+    "export_speed": "CSV exports generated and downloaded within 10 seconds"
+  }
+}
+
